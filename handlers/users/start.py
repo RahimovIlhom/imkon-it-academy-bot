@@ -17,6 +17,7 @@ async def show_channels(message: types.Message, state: FSMContext):
     fullname = message.from_user.full_name
     if db.select_user(user_id):
         await message.answer("Yo'nalishni tanlang:", reply_markup=menuButtons)
+        await state.finish()
         return
     msg = await message.answer(f"Assalomu alaykum {fullname}.\n\n"
                                "‼️ Botdan foydalanish uchun quyidagi tugmani bosing va konkursimizda ishtirok eting\n\n"
